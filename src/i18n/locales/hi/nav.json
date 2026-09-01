@@ -1,0 +1,24 @@
+{
+  "dashboard": "डैशबोर्ड",
+  "water": "जल पूर्वानुमान",
+  "disease": "रोग पहचान",
+  "pests": "कीट पहचान",
+  "live": "लाइव कैमरा एआई",
+  "farm3d": "3D फ़ार्म मॉनिटर",
+  "crop": "फसल प्रोफ़ाइल",
+  "hotspots": "हॉटस्पॉट मानचित्र",
+  "analytics": "विश्लेषण",
+  "official": "अधिकारी कंसोल",
+  "short": {
+    "dashboard": "होम",
+    "water": "जल",
+    "disease": "रोग",
+    "pests": "कीट",
+    "live": "लाइव",
+    "farm3d": "3D",
+    "crop": "फसल",
+    "hotspots": "नक्शा",
+    "analytics": "आँकड़े",
+    "official": "अधिकारी"
+  }
+}

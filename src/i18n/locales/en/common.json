@@ -1,0 +1,42 @@
+{
+  "appName": "AgriSense AI",
+  "tagline": "Smart farming",
+  "language": { "title": "Language", "change": "Change language" },
+  "actions": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "create": "Create",
+    "retry": "Try again",
+    "close": "Close",
+    "analyze": "Analyze",
+    "upload": "Upload",
+    "refresh": "Refresh",
+    "export": "Export CSV",
+    "back": "Back"
+  },
+  "states": {
+    "loading": "Loading…",
+    "empty": "Nothing here yet",
+    "error": "Something went wrong",
+    "noFarm": "Select or create a farm to continue"
+  },
+  "farm": {
+    "select": "Select farm",
+    "add": "Add farm",
+    "addTitle": "Add a farm or field",
+    "namePlaceholder": "Field name (e.g. South Paddy)",
+    "locationPlaceholder": "Location (optional)",
+    "create": "Create field"
+  },
+  "alerts": {
+    "title": "Alerts",
+    "empty": "No alerts yet 🌱",
+    "aria": "Alerts"
+  },
+  "shell": {
+    "collapse": "Collapse",
+    "toggleTheme": "Toggle theme",
+    "signOut": "Sign out",
+    "assistant": "Open AI assistant"
+  }
+}

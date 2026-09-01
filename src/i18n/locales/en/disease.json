@@ -1,0 +1,31 @@
+{
+  "title": "🔬 Disease Detection",
+  "subtitle": "Drop a leaf photo — colour-space and texture analysis runs on the server.",
+  "dropzone": {
+    "prompt": "Drop a leaf image here",
+    "hint": "or click to browse · JPG / PNG",
+    "previewAlt": "Uploaded leaf preview"
+  },
+  "chooseAnother": "Choose another image",
+  "analysing": "Analysing leaf…",
+  "resultsPlaceholder": "Results will appear here after a scan.",
+  "noPlantDetected": "No plant detected",
+  "confidence": "{{value}}% confidence",
+  "severitySuffix": "{{severity}} severity",
+  "textureVariance": "Texture variance: {{value}} (lesion/blur signature)",
+  "colorComposition": "Leaf colour composition",
+  "colors": {
+    "green": "Green (chlorophyll)",
+    "brown": "Brown (necrosis)",
+    "yellow": "Yellow (chlorosis)"
+  },
+  "recentUploads": "Recent uploads",
+  "noScans": "No scans yet.",
+  "toast": {
+    "invalidFile": "Please choose an image file",
+    "noLeafDetected": "No leaf detected in that image — try a close-up of a single leaf.",
+    "detectionFailed": "Detection failed",
+    "diseaseAlert": "{{disease}} detected ({{severity}} severity, {{confidence}}% confidence).",
+    "healthySuccess": "Healthy leaf · {{confidence}}% confidence"
+  }
+}

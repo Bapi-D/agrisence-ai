@@ -1,0 +1,31 @@
+{
+  "title": "🔬 रोग शोध",
+  "subtitle": "पानाचा फोटो टाका — रंग आणि पोत विश्लेषण सर्व्हरवर चालते.",
+  "dropzone": {
+    "prompt": "येथे पानाची प्रतिमा टाका",
+    "hint": "किंवा ब्राउझ करण्यासाठी क्लिक करा · JPG / PNG",
+    "previewAlt": "अपलोड केलेल्या पानाचे पूर्वावलोकन"
+  },
+  "chooseAnother": "दुसरी प्रतिमा निवडा",
+  "analysing": "पानाचे विश्लेषण सुरू आहे…",
+  "resultsPlaceholder": "स्कॅननंतर निकाल येथे दिसतील.",
+  "noPlantDetected": "कोणतीही वनस्पती आढळली नाही",
+  "confidence": "{{value}}% विश्वास",
+  "severitySuffix": "{{severity}} तीव्रता",
+  "textureVariance": "पोत भिन्नता: {{value}} (जखम/अस्पष्टता संकेत)",
+  "colorComposition": "पानाची रंग रचना",
+  "colors": {
+    "green": "हिरवा (क्लोरोफिल)",
+    "brown": "तपकिरी (नेक्रोसिस)",
+    "yellow": "पिवळा (क्लोरोसिस)"
+  },
+  "recentUploads": "अलीकडील अपलोड",
+  "noScans": "अद्याप कोणतेही स्कॅन नाही.",
+  "toast": {
+    "invalidFile": "कृपया एक प्रतिमा फाईल निवडा",
+    "noLeafDetected": "त्या प्रतिमेत कोणतेही पान आढळले नाही — एका पानाचा क्लोज-अप वापरून पहा.",
+    "detectionFailed": "शोध अयशस्वी झाला",
+    "diseaseAlert": "{{disease}} आढळले ({{severity}} तीव्रता, {{confidence}}% विश्वास).",
+    "healthySuccess": "निरोगी पान · {{confidence}}% विश्वास"
+  }
+}

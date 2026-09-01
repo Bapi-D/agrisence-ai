@@ -1,0 +1,24 @@
+{
+  "dashboard": "डॅशबोर्ड",
+  "water": "पाणी अंदाज",
+  "disease": "रोग ओळख",
+  "pests": "कीड ओळख",
+  "live": "लाइव्ह कॅमेरा एआय",
+  "farm3d": "3D शेत मॉनिटर",
+  "crop": "पीक प्रोफाइल",
+  "hotspots": "हॉटस्पॉट नकाशा",
+  "analytics": "विश्लेषण",
+  "official": "अधिकारी कन्सोल",
+  "short": {
+    "dashboard": "होम",
+    "water": "पाणी",
+    "disease": "रोग",
+    "pests": "कीड",
+    "live": "लाइव्ह",
+    "farm3d": "3D",
+    "crop": "पीक",
+    "hotspots": "नकाशा",
+    "analytics": "आकडे",
+    "official": "अधिकारी"
+  }
+}

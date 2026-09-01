@@ -1,0 +1,24 @@
+{
+  "title": "💧 पाणी अंदाज",
+  "subtitle": "{{farm}} साठी सिंचन मॉडेलमध्ये मातीतील ओलावा वाचन द्या.",
+  "yourField": "तुमच्या शेतासाठी",
+  "soilMoisture": "मातीतील ओलावा",
+  "predictButton": "सिंचनाच्या गरजेचा अंदाज लावा",
+  "category": "श्रेणी:",
+  "confidence": "{{value}}% विश्वास",
+  "trendTitle": "24-तासांचा ओलावा कल",
+  "historyTitle": "अंदाज इतिहास",
+  "noHistory": "या शेतासाठी अद्याप कोणताही अंदाज नोंदवलेला नाही.",
+  "table": {
+    "time": "वेळ",
+    "moisture": "ओलावा",
+    "verdict": "निकाल",
+    "category": "श्रेणी",
+    "confidence": "विश्वास"
+  },
+  "toast": {
+    "predictionFailed": "अंदाज अयशस्वी झाला. कृपया पुन्हा प्रयत्न करा.",
+    "thresholdAlert": "{{farm}}: मातीतील ओलावा {{moisture}}% हा {{threshold}}% मर्यादेपेक्षा कमी आहे.",
+    "success": "{{label}} · {{confidence}}% विश्वास"
+  }
+}

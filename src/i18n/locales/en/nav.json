@@ -1,0 +1,24 @@
+{
+  "dashboard": "Dashboard",
+  "water": "Water Prediction",
+  "disease": "Disease Detection",
+  "pests": "Pest Detection",
+  "live": "Live Camera AI",
+  "farm3d": "3D Farm Monitor",
+  "crop": "Crop Profile",
+  "hotspots": "Hotspot Map",
+  "analytics": "Analytics",
+  "official": "Officer Console",
+  "short": {
+    "dashboard": "Home",
+    "water": "Water",
+    "disease": "Disease",
+    "pests": "Pests",
+    "live": "Live",
+    "farm3d": "3D",
+    "crop": "Crop",
+    "hotspots": "Map",
+    "analytics": "Stats",
+    "official": "Officer"
+  }
+}

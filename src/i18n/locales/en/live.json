@@ -1,0 +1,21 @@
+{
+  "title": "📷 Live Camera AI",
+  "subtitle": "Auto-captures a frame every 1.8 seconds and runs the same leaf analysis pipeline.",
+  "cameraOff": "Camera is off",
+  "scanning": "scanning",
+  "buttons": {
+    "stopSession": "Stop session",
+    "startLiveScan": "Start live scan"
+  },
+  "score": {
+    "title": "Session health score",
+    "summary": "{{healthy}} healthy of {{total}} frames analysed this session."
+  },
+  "placeholder": "Start the camera to stream live diagnostics.",
+  "toast": {
+    "cameraDenied": "Camera access denied or unavailable"
+  },
+  "alert": {
+    "highSeverity": "Live scan flagged {{disease}} at high severity."
+  }
+}

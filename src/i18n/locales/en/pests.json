@@ -1,0 +1,78 @@
+{
+  "title": "🐛 Pest Detection",
+  "subtitle": "Identify field pests from a photo, log trap catches and follow the IPM action plan.",
+  "dropzone": {
+    "title": "Drop a crop / pest photo here",
+    "hint": "or click to browse · JPG / PNG",
+    "alt": "Uploaded crop photo for pest identification"
+  },
+  "buttons": {
+    "identifying": "Identifying pest…",
+    "chooseAnother": "Choose another image",
+    "saveTrapLog": "Save trap log"
+  },
+  "result": {
+    "noPestDetected": "No pest detected",
+    "confidence": "{{value}}% confidence",
+    "infestation": "{{severity}} infestation",
+    "stage": "{{stage}} stage",
+    "ipmTitle": "Recommended IPM action",
+    "damageSignature": "Damage signature: {{ratio}}% · texture variance {{variance}}",
+    "placeholder": "Pest identification results will appear here."
+  },
+  "trapForm": {
+    "title": "Log a trap count",
+    "trapType": "Trap type",
+    "trapTypes": {
+      "pheromone": "Pheromone trap",
+      "sticky": "Sticky trap",
+      "light": "Light trap"
+    },
+    "pestType": "Pest type",
+    "count": "Count caught",
+    "countPlaceholder": "e.g. 14",
+    "date": "Date",
+    "location": "Location / block",
+    "locationPlaceholder": "e.g. North block, row 4",
+    "notes": "Notes",
+    "notesPlaceholder": "Optional field observation"
+  },
+  "history": {
+    "title": "Pest history",
+    "pestFilter": "Pest",
+    "allPests": "All pests",
+    "from": "From",
+    "to": "To",
+    "empty": "No pest records yet for this farm.",
+    "columns": {
+      "date": "Date",
+      "source": "Source",
+      "pest": "Pest",
+      "detail": "Detail",
+      "value": "Value",
+      "expertReview": "Expert review"
+    },
+    "kind": {
+      "scan": "Scan",
+      "trap": "Trap"
+    },
+    "detail": {
+      "scan": "{{severity}} · {{stage}}",
+      "trapNoLocation": "{{trapType}} trap",
+      "trapWithLocation": "{{trapType}} trap · {{location}}"
+    },
+    "value": {
+      "confidence": "{{value}}%",
+      "caught": "{{count}} caught"
+    }
+  },
+  "toast": {
+    "chooseImage": "Please choose an image file",
+    "noPestIdentified": "No pest identified",
+    "noPestPressure": "No pest pressure detected",
+    "identifyFailed": "Pest identification failed",
+    "invalidCount": "Enter a valid trap count",
+    "trapLogged": "Trap count logged",
+    "saveTrapFailed": "Could not save trap log"
+  }
+}
