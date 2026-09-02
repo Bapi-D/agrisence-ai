@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { Leaf, Loader2 } from "lucide-react";
+import { Leaf, Loader2, Eye, EyeOff } from "lucide-react";
 import { toast } from "sonner";
 import { useTranslation } from "react-i18next";
 
@@ -38,6 +38,7 @@ function AuthPage() {
   const [mode, setMode] = useState<"signin" | "signup">("signin");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [name, setName] = useState("");
   const [role, setRole] = useState<"farmer" | "officer">("farmer");
   const [busy, setBusy] = useState(false);
@@ -80,7 +81,6 @@ function AuthPage() {
     }
   }
 
-
   async function google() {
     const result = await lovable.auth.signInWithOAuth("google", {
       redirect_uri: window.location.origin,
@@ -121,10 +121,12 @@ function AuthPage() {
             <div className="space-y-1.5">
               <Label>{t("iAmA")}</Label>
               <div className="grid grid-cols-2 gap-2">
-                {([
-                  { key: "farmer", label: t("roleFarmer"), hint: t("roleFarmerHint") },
-                  { key: "officer", label: t("roleOfficer"), hint: t("roleOfficerHint") },
-                ] as const).map((opt) => (
+                {(
+                  [
+                    { key: "farmer", label: t("roleFarmer"), hint: t("roleFarmerHint") },
+                    { key: "officer", label: t("roleOfficer"), hint: t("roleOfficerHint") },
+                  ] as const
+                ).map((opt) => (
                   <button
                     key={opt.key}
                     type="button"
@@ -133,7 +135,7 @@ function AuthPage() {
                       "rounded-[var(--radius-md)] border border-border px-3 py-2.5 text-left transition-colors",
                       role === opt.key
                         ? "border-primary bg-primary/10"
-                        : "hover:bg-secondary",
+                        : "hover:bg-secondary"
                     )}
                   >
                     <span className="block text-sm font-medium">{opt.label}</span>
@@ -156,15 +158,30 @@ function AuthPage() {
           </div>
           <div className="space-y-1.5">
             <Label htmlFor="password">{t("password")}</Label>
-            <Input
-              id="password"
-              type="password"
-              required
-              minLength={6}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="••••••••"
-            />
+            <div className="relative">
+              <Input
+                id="password"
+                type={showPassword ? "text" : "password"}
+                required
+                minLength={6}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="••••••••"
+                className="pr-10"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground focus:outline-none"
+                aria-label={showPassword ? "Hide password" : "Show password"}
+              >
+                {showPassword ? (
+                  <EyeOff className="h-4 w-4" />
+                ) : (
+                  <Eye className="h-4 w-4" />
+                )}
+              </button>
+            </div>
           </div>
           <Button type="submit" className="w-full" disabled={busy}>
             {busy && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
