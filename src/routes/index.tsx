@@ -49,47 +49,60 @@ const FEATURES = [
     emoji: "💧",
     title: "Water Prediction",
     text: "Threshold model turns a moisture reading into a clear irrigation verdict with confidence.",
+    to: "/water",
   },
+
   {
     icon: ScanLine,
     emoji: "🔬",
     title: "Disease Detection",
     text: "HSV colour + texture analysis of a leaf photo returns disease, severity and treatment.",
+    to: "/disease",
   },
+
   {
     icon: Camera,
     emoji: "📷",
     title: "Live Camera AI",
     text: "Continuous webcam scanning with a rolling session health score.",
+    to: "/live",
   },
+
   {
     icon: Boxes,
     emoji: "🌿",
     title: "3D Farm Monitor",
     text: "Rotate, zoom and click plants in an interactive field grid colour-coded by health.",
+    to: "/farm-3d",
   },
 ];
-
 const WORKFLOW = [
   {
     number: "01",
     title: "Collect",
     text: "Capture soil, crop and field observations.",
+    
   },
+
   {
     number: "02",
     title: "Analyze",
     text: "AI processes field and plant information.",
+   
   },
+
   {
     number: "03",
     title: "Predict",
     text: "Identify irrigation, disease and pest risks.",
+    
   },
+
   {
     number: "04",
     title: "Act",
     text: "Get clear insights to make better farm decisions.",
+    
   },
 ];
 
@@ -376,31 +389,32 @@ function Landing() {
   className="mt-20 grid gap-4 sm:grid-cols-2"
 >
           {FEATURES.map((f) => (
-            <GlassCard
-  key={f.title}
-  hover
-  className="group animate-rise cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
->
-              <div className="mb-3 flex items-center gap-3">
-                <span className="grid h-10 w-10 place-items-center rounded-[var(--radius-md)] bg-secondary text-secondary-foreground">
-                  <f.icon className="h-5 w-5" />
-                </span>
+  <Link key={f.title} to={f.to} className="block">
+    <GlassCard
+      hover
+      className="group animate-rise cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+    >
+      <div className="mb-3 flex items-center gap-3">
+        <span className="grid h-10 w-10 place-items-center rounded-[var(--radius-md)] bg-secondary text-secondary-foreground">
+          <f.icon className="h-5 w-5" />
+        </span>
 
-                <h2 className="text-base font-semibold">
-                  {f.emoji} {f.title}
-                </h2>
-              </div>
+        <h2 className="text-base font-semibold">
+          {f.emoji} {f.title}
+        </h2>
+      </div>
 
-              <p className="text-sm leading-6 text-muted-foreground">
-                {f.text}
-              </p>
+      <p className="text-sm leading-6 text-muted-foreground">
+        {f.text}
+      </p>
 
-              <div className="mt-4 flex items-center gap-1 text-xs font-medium text-primary">
-                Explore capability
-                <ArrowRight className="h-3.5 w-3.5" />
-              </div>
-            </GlassCard>
-          ))}
+      <div className="mt-4 flex items-center gap-1 text-xs font-medium text-primary">
+        Explore capability
+        <ArrowRight className="h-3.5 w-3.5" />
+      </div>
+    </GlassCard>
+  </Link>
+))}
         </section>
 
         {/* HOW IT WORKS */}
@@ -422,10 +436,10 @@ function Landing() {
 
           <div className="mt-10 grid gap-4 md:grid-cols-4">
             {WORKFLOW.map((step, index) => (
-              <GlassCard
-                key={step.number}
-                className="relative animate-rise"
-              >
+  <Link key={step.number} to={step.to} className="block">
+    <GlassCard
+      className="relative animate-rise"
+    >
                 <div className="flex items-center justify-between">
                   <span className="text-3xl font-semibold text-primary/30">
                     {step.number}
@@ -444,7 +458,8 @@ function Landing() {
                   {step.text}
                 </p>
               </GlassCard>
-            ))}
+</Link>
+))}
           </div>
         </section>
 
