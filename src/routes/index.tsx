@@ -46,6 +46,7 @@ const FEATURES = [
     defaultText:
       "Real-time soil moisture sensors mapped with weather predictions for precise watering.",
   },
+
   {
     icon: ScanLine,
     titleKey: "features.leafTitle",
@@ -54,6 +55,7 @@ const FEATURES = [
     defaultText:
       "Instant disease scanning and organic treatment suggestions via high-res plant analysis.",
   },
+
   {
     icon: Camera,
     titleKey: "features.cameraTitle",
@@ -62,6 +64,7 @@ const FEATURES = [
     defaultText:
       "24/7 computer vision scanning for crop threat evaluation and field surveillance.",
   },
+
   {
     icon: Boxes,
     titleKey: "features.gridTitle",
@@ -95,7 +98,6 @@ const PRODUCTS = [
     tag: "Crop Protection",
   },
 ];
-
 const WORKFLOW = [
   {
     number: "01",
@@ -105,6 +107,7 @@ const WORKFLOW = [
     defaultText:
       "Integrate field sensors, cameras, and drone/satellite inputs.",
   },
+
   {
     number: "02",
     titleKey: "workflow.step2Title",
@@ -113,6 +116,7 @@ const WORKFLOW = [
     defaultText:
       "Computer vision and neural networks analyze soil and leaf health.",
   },
+
   {
     number: "03",
     titleKey: "workflow.step3Title",
@@ -121,6 +125,7 @@ const WORKFLOW = [
     defaultText:
       "Forecast pest outbreaks, drought stress, and nutrient gaps.",
   },
+
   {
     number: "04",
     titleKey: "workflow.step4Title",
@@ -566,7 +571,8 @@ function Landing() {
                   })}
                 </Button>
               </GlassCard>
-            ))}
+</Link>
+))}
           </div>
         </section>
 
