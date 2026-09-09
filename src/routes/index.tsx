@@ -1,43 +1,37 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
-  Activity,
   ArrowRight,
   Boxes,
-  BrainCircuit,
   Camera,
   CheckCircle2,
-  CloudSun,
   Droplets,
+  Globe,
   Leaf,
-  MapPin,
+  Mail,
+  Menu,
+  Phone,
   ScanLine,
-  ShieldCheck,
   Sparkles,
+  X,
 } from "lucide-react";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
-import { GlassCard, Orbs } from "@/components/agri/GlassCard";
+import { GlassCard } from "@/components/agri/GlassCard";
 import { Button } from "@/components/ui/button";
+import { useAdvisoryI18n } from "@/i18n/advisory";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "AgriSense AI — Smart Farming Dashboard" },
+      {
+        title: "AgriSense AI — Precision Agriculture Platform",
+      },
       {
         name: "description",
         content:
-          "AgriSense AI predicts irrigation needs, detects leaf disease from photos or live camera, and maps field health in an interactive 3D monitor.",
+          "Smart farming solutions with AI-powered crop analytics, soil monitoring, and disease prediction.",
       },
-      {
-        property: "og:title",
-        content: "AgriSense AI — Smart Farming Dashboard",
-      },
-      {
-        property: "og:description",
-        content:
-          "Soil-moisture irrigation predictions, AI leaf-disease detection and a 3D farm health monitor in one dashboard.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Landing,
@@ -46,478 +40,729 @@ export const Route = createFileRoute("/")({
 const FEATURES = [
   {
     icon: Droplets,
-    emoji: "💧",
-    title: "Water Prediction",
-    text: "Threshold model turns a moisture reading into a clear irrigation verdict with confidence.",
+    titleKey: "features.waterTitle",
+    textKey: "features.waterDesc",
+    defaultTitle: "Water & Irrigation AI",
+    defaultText:
+      "Real-time soil moisture sensors mapped with weather predictions for precise watering.",
   },
   {
     icon: ScanLine,
-    emoji: "🔬",
-    title: "Disease Detection",
-    text: "HSV colour + texture analysis of a leaf photo returns disease, severity and treatment.",
+    titleKey: "features.leafTitle",
+    textKey: "features.leafDesc",
+    defaultTitle: "Leaf Disease Detection",
+    defaultText:
+      "Instant disease scanning and organic treatment suggestions via high-res plant analysis.",
   },
   {
     icon: Camera,
-    emoji: "📷",
-    title: "Live Camera AI",
-    text: "Continuous webcam scanning with a rolling session health score.",
+    titleKey: "features.cameraTitle",
+    textKey: "features.cameraDesc",
+    defaultTitle: "Live Camera Monitoring",
+    defaultText:
+      "24/7 computer vision scanning for crop threat evaluation and field surveillance.",
   },
   {
     icon: Boxes,
-    emoji: "🌿",
-    title: "3D Farm Monitor",
-    text: "Rotate, zoom and click plants in an interactive field grid colour-coded by health.",
+    titleKey: "features.gridTitle",
+    textKey: "features.gridDesc",
+    defaultTitle: "3D Farm Health Grid",
+    defaultText:
+      "Interactive 3D model mapping individual crop patches with color-coded vitality.",
+  },
+];
+
+const PRODUCTS = [
+  {
+    id: "bhu-tejas",
+    name: "BHU TEJAS",
+    desc: "Liquid formulation microbial consortium developed for soil enrichment and root strength.",
+    img: "https://images.unsplash.com/photo-1585314062340-f1a5a7c9328d?q=80&w=600&auto=format&fit=crop",
+    tag: "Bio-Fertilizer",
+  },
+  {
+    id: "bio-sparsh",
+    name: "BIO SPARSH",
+    desc: "Phosphate-solubilizing bacterial bio-fertilizer for balanced nutrient absorption.",
+    img: "https://images.unsplash.com/photo-1628352081506-83c43123ed6d?q=80&w=600&auto=format&fit=crop",
+    tag: "Soil Health",
+  },
+  {
+    id: "agriderma",
+    name: "AGRIDERMA",
+    desc: "Eco-friendly biological fungicide protecting roots from soil-borne pathogens.",
+    img: "https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?q=80&w=600&auto=format&fit=crop",
+    tag: "Crop Protection",
   },
 ];
 
 const WORKFLOW = [
   {
     number: "01",
-    title: "Collect",
-    text: "Capture soil, crop and field observations.",
+    titleKey: "workflow.step1Title",
+    textKey: "workflow.step1Desc",
+    defaultTitle: "Collect Data",
+    defaultText:
+      "Integrate field sensors, cameras, and drone/satellite inputs.",
   },
   {
     number: "02",
-    title: "Analyze",
-    text: "AI processes field and plant information.",
+    titleKey: "workflow.step2Title",
+    textKey: "workflow.step2Desc",
+    defaultTitle: "AI Analysis",
+    defaultText:
+      "Computer vision and neural networks analyze soil and leaf health.",
   },
   {
     number: "03",
-    title: "Predict",
-    text: "Identify irrigation, disease and pest risks.",
+    titleKey: "workflow.step3Title",
+    textKey: "workflow.step3Desc",
+    defaultTitle: "Predict Risk",
+    defaultText:
+      "Forecast pest outbreaks, drought stress, and nutrient gaps.",
   },
   {
     number: "04",
-    title: "Act",
-    text: "Get clear insights to make better farm decisions.",
+    titleKey: "workflow.step4Title",
+    textKey: "workflow.step4Desc",
+    defaultTitle: "Take Action",
+    defaultText:
+      "Get actionable daily recommendations right on your phone.",
   },
 ];
 
-const CAPABILITIES = [
-  "Soil-moisture based irrigation guidance",
-  "AI-assisted leaf disease detection",
-  "Live camera crop monitoring",
-  "Disease and pest risk forecasting",
-  "Interactive 3D farm visualization",
-  "Field hotspot monitoring",
-];
-
 function Landing() {
+  const { t } = useTranslation(["nav", "common", "dashboard"]);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const adv = useAdvisoryI18n();
+
+  const scrollToSection = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    id: string,
+  ) => {
+    e.preventDefault();
+    setMobileMenuOpen(false);
+
+    const element = document.getElementById(id);
+
+    if (element) {
+      const headerOffset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition =
+        elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
-    <div className="relative min-h-screen overflow-hidden">
-      <Orbs />
-
-      <div className="mx-auto max-w-6xl px-4 py-12 md:py-16">
-        {/* HEADER */}
-        <header className="flex items-center gap-3">
-  {/* Logo */}
-  <span className="grid h-10 w-10 place-items-center rounded-[var(--radius-md)] bg-primary text-primary-foreground shadow-sm">
-    <Leaf className="h-5 w-5" />
-  </span>
-
-  <span className="font-display text-lg font-semibold">
-    AgriSense AI
-  </span>
-
-  {/* Navigation */}
-  <nav className="ml-auto hidden items-center gap-6 md:flex">
-    <a
-      href="#features"
-      className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-    >
-      Features
-    </a>
-
-    <a
-      href="#how-it-works"
-      className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-    >
-      How it works
-    </a>
-
-    <a
-      href="#capabilities"
-      className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-    >
-      Capabilities
-    </a>
-  </nav>
-
-  {/* Sign in */}
-  <Link to="/auth" className="ml-2">
-    <Button variant="outline">Sign in</Button>
-  </Link>
-</header>
-
-        {/* HERO */}
-<section className="relative mt-16 md:mt-24">
-  <div className="grid items-center gap-12 lg:grid-cols-[1fr_0.9fr] lg:gap-16">
-    {/* LEFT — HERO CONTENT */}
-    <div>
-      <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-background/70 px-3 py-1.5 text-xs font-medium text-muted-foreground shadow-sm backdrop-blur">
-        <Sparkles className="h-3.5 w-3.5 text-primary" />
-        AI-powered precision agriculture
-      </p>
-
-      <h1 className="max-w-3xl text-4xl font-semibold leading-[1.04] tracking-tight md:text-6xl lg:text-7xl">
-        Know exactly when to{" "}
-        <span className="text-gradient-green">water</span> and what your{" "}
-        <span className="text-gradient-green">leaves</span> are telling you.
-      </h1>
-
-      <p className="mt-6 max-w-xl text-base leading-7 text-muted-foreground md:text-lg">
-        AgriSense AI combines soil-moisture modelling, computer-vision leaf
-        diagnostics and intelligent field monitoring into one powerful
-        dashboard for your farm.
-      </p>
-
-      <div className="mt-8 flex flex-wrap gap-3">
-        <Link to="/auth">
-          <Button size="lg" className="gap-2">
-            Start monitoring
-            <ArrowRight className="h-4 w-4" />
-          </Button>
-        </Link>
-
-        <Link to="/auth">
-          <Button size="lg" variant="outline">
-            I already have an account
-          </Button>
-        </Link>
-      </div>
-
-      {/* TRUST POINTS */}
-      <div className="mt-8 grid max-w-xl grid-cols-2 gap-x-6 gap-y-3 text-sm text-muted-foreground">
-        <span className="flex items-center gap-2">
-          <CheckCircle2 className="h-4 w-4 text-primary" />
-          Smart irrigation
-        </span>
-
-        <span className="flex items-center gap-2">
-          <CheckCircle2 className="h-4 w-4 text-primary" />
-          AI disease detection
-        </span>
-
-        <span className="flex items-center gap-2">
-          <CheckCircle2 className="h-4 w-4 text-primary" />
-          Risk forecasting
-        </span>
-
-        <span className="flex items-center gap-2">
-          <CheckCircle2 className="h-4 w-4 text-primary" />
-          3D farm monitoring
-        </span>
-      </div>
-    </div>
-
-    {/* RIGHT — FARM INTELLIGENCE PREVIEW */}
-    <div className="relative">
-      {/* Glow */}
-      <div className="absolute -inset-6 -z-10 rounded-full bg-primary/10 blur-3xl" />
-
-      <GlassCard className="relative overflow-hidden p-4 shadow-xl md:p-5">
-        {/* Dashboard header */}
-        <div className="flex items-center justify-between border-b border-border/50 pb-4">
+    <div className="relative min-h-screen bg-slate-950 text-slate-100 font-sans overflow-x-hidden selection:bg-emerald-500 selection:text-white">
+      {/* NAVBAR */}
+      <header className="fixed top-0 left-0 right-0 z-[100] border-b border-slate-800/80 bg-slate-950/90 backdrop-blur-md shadow-lg shadow-black/40 h-20 flex items-center">
+        <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 sm:px-6">
           <div className="flex items-center gap-3">
-            <span className="grid h-9 w-9 place-items-center rounded-lg bg-primary text-primary-foreground">
-              <BrainCircuit className="h-4 w-4" />
+            <span className="grid h-10 w-10 place-items-center rounded-xl bg-emerald-600 text-white shadow-md shadow-emerald-600/30">
+              <Leaf className="h-6 w-6" />
             </span>
 
             <div>
-              <p className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
-                AgriSense Intelligence
+              <span className="font-display text-xl font-bold tracking-tight text-white">
+                AgriSense <span className="text-emerald-400">AI</span>
+              </span>
+
+              <p className="text-[10px] text-slate-400 hidden sm:block">
+                Smart Farming Intelligence
               </p>
-              <p className="text-sm font-semibold">Farm Command Center</p>
             </div>
           </div>
 
-          <span className="flex items-center gap-1.5 rounded-full border border-border bg-background/60 px-2.5 py-1 text-[10px] font-medium">
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-primary" />
-            AI ACTIVE
-          </span>
-        </div>
+          {/* DESKTOP NAV */}
+          <nav className="hidden items-center gap-8 font-medium text-sm text-slate-300 md:flex">
+            <a
+              href="#features"
+              onClick={(e) => scrollToSection(e, "features")}
+              className="transition-colors hover:text-emerald-400 cursor-pointer"
+            >
+              {t("nav:features", {
+                defaultValue: "Features",
+              })}
+            </a>
 
-        {/* Field preview */}
-        <div className="relative mt-4 h-48 overflow-hidden rounded-xl border border-border/50 bg-secondary/40">
-          <div className="absolute left-4 top-4 z-10">
-            <p className="text-[10px] font-medium text-muted-foreground">
-              FIELD OVERVIEW
-            </p>
-            <p className="mt-1 text-sm font-semibold">Crop Health Map</p>
-          </div>
+            <a
+              href="#products"
+              onClick={(e) => scrollToSection(e, "products")}
+              className="transition-colors hover:text-emerald-400 cursor-pointer"
+            >
+              {t("nav:products", {
+                defaultValue: "Our Products",
+              })}
+            </a>
 
-          {/* Crop rows */}
-          <div className="absolute inset-x-5 bottom-5 top-20 grid grid-cols-7 gap-2">
-            {Array.from({ length: 35 }).map((_, index) => (
-              <div
-                key={index}
-                className="relative rounded-md border border-primary/10 bg-primary/10 transition-all duration-300 hover:scale-105"
+            <a
+              href="#how-it-works"
+              onClick={(e) => scrollToSection(e, "how-it-works")}
+              className="transition-colors hover:text-emerald-400 cursor-pointer"
+            >
+              {t("nav:howItWorks", {
+                defaultValue: "How it Works",
+              })}
+            </a>
+          </nav>
+
+          {/* DESKTOP ACTIONS */}
+          <div className="hidden md:flex items-center gap-4">
+
+            <Link to="/auth">
+              <Button
+                variant="ghost"
+                size="sm"
+                className="font-semibold text-slate-300 hover:text-white hover:bg-slate-800"
               >
-                <span className="absolute left-1/2 top-1/2 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/60" />
-              </div>
-            ))}
+                {t("common:signIn", {
+                  defaultValue: "Sign In",
+                })}
+              </Button>
+            </Link>
+
+            <Link to="/auth">
+              <Button
+                size="sm"
+                className="bg-emerald-600 font-semibold text-white shadow-md hover:bg-emerald-500"
+              >
+                {t("common:getStarted", {
+                  defaultValue: "Get Started",
+                })}
+              </Button>
+            </Link>
           </div>
 
-          {/* Map status */}
-          <div className="absolute bottom-3 left-3 flex items-center gap-2 rounded-lg border border-border/50 bg-background/80 px-3 py-2 text-[10px] backdrop-blur">
-            <Activity className="h-3 w-3 text-primary" />
-            Field health
-            <span className="font-semibold">Healthy</span>
-          </div>
+          {/* MOBILE TOGGLE */}
+          <div className="flex items-center gap-2 md:hidden">
 
-          <div className="absolute right-3 top-3 rounded-lg border border-border/50 bg-background/80 px-2.5 py-1.5 text-[10px] text-muted-foreground backdrop-blur">
-            <span className="mr-1.5 inline-block h-1.5 w-1.5 rounded-full bg-primary" />
-            Live field view
-          </div>
-        </div>
-
-        {/* Metrics */}
-        <div className="mt-4 grid grid-cols-2 gap-3">
-          {/* Moisture */}
-          <div className="rounded-xl border border-border/50 bg-background/50 p-3.5">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <Droplets className="h-3.5 w-3.5 text-primary" />
-                <span className="text-xs font-medium">Soil moisture</span>
-              </div>
-
-              <span className="text-sm font-semibold">62%</span>
-            </div>
-
-            <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-secondary">
-              <div className="h-full w-[62%] rounded-full bg-primary" />
-            </div>
-
-            <p className="mt-2 text-[10px] text-muted-foreground">
-              Irrigation conditions stable
-            </p>
-          </div>
-
-          {/* Plant health */}
-          <div className="rounded-xl border border-border/50 bg-background/50 p-3.5">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <Leaf className="h-3.5 w-3.5 text-primary" />
-                <span className="text-xs font-medium">Plant health</span>
-              </div>
-
-              <span className="text-sm font-semibold">87%</span>
-            </div>
-
-            <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-secondary">
-              <div className="h-full w-[87%] rounded-full bg-primary" />
-            </div>
-
-            <p className="mt-2 text-[10px] text-muted-foreground">
-              Healthy crop signals
-            </p>
+            <button
+              onClick={() =>
+                setMobileMenuOpen(!mobileMenuOpen)
+              }
+              className="p-2 text-slate-200 hover:bg-slate-800 rounded-lg transition-colors"
+            >
+              {mobileMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
+            </button>
           </div>
         </div>
 
-        {/* AI insights */}
-        <div className="mt-3 grid grid-cols-2 gap-3">
-          <div className="flex items-center gap-2 rounded-xl border border-border/50 bg-background/50 p-3">
-            <ShieldCheck className="h-4 w-4 text-primary" />
+        {/* MOBILE DRAWER */}
+        {mobileMenuOpen && (
+          <div className="absolute top-20 left-0 right-0 md:hidden border-b border-slate-800 bg-slate-950 px-6 py-5 space-y-4 shadow-xl">
+            <nav className="flex flex-col space-y-3 font-medium text-sm text-slate-300">
+              <a
+                href="#features"
+                onClick={(e) =>
+                  scrollToSection(e, "features")
+                }
+                className="hover:text-emerald-400"
+              >
+                {t("nav:features", {
+                  defaultValue: "Features",
+                })}
+              </a>
 
-            <div>
-              <p className="text-[10px] text-muted-foreground">
-                Disease risk
-              </p>
-              <p className="text-xs font-semibold">Low</p>
+              <a
+                href="#products"
+                onClick={(e) =>
+                  scrollToSection(e, "products")
+                }
+                className="hover:text-emerald-400"
+              >
+                {t("nav:products", {
+                  defaultValue: "Our Products",
+                })}
+              </a>
+
+              <a
+                href="#how-it-works"
+                onClick={(e) =>
+                  scrollToSection(e, "how-it-works")
+                }
+                className="hover:text-emerald-400"
+              >
+                {t("nav:howItWorks", {
+                  defaultValue: "How it Works",
+                })}
+              </a>
+            </nav>
+
+            <div className="pt-3 border-t border-slate-800 flex flex-col gap-2.5">
+              <Link
+                to="/auth"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <Button
+                  variant="outline"
+                  className="w-full border-slate-700 text-black hover:bg-slate-800"
+                >
+                  {t("common:signIn", {
+                    defaultValue: "Sign In",
+                  })}
+                </Button>
+              </Link>
+
+              <Link
+                to="/auth"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <Button className="w-full bg-emerald-600 text-white hover:bg-emerald-500">
+                  {t("common:getStarted", {
+                    defaultValue: "Get Started",
+                  })}
+                </Button>
+              </Link>
             </div>
           </div>
+        )}
+      </header>
 
-          <div className="flex items-center gap-2 rounded-xl border border-border/50 bg-background/50 p-3">
-            <CloudSun className="h-4 w-4 text-primary" />
+      {/* HERO SECTION */}
+      <section className="relative pt-20 min-h-[calc(100vh-80px)] w-full overflow-hidden bg-slate-950 flex items-center justify-center py-12 px-4 sm:px-6">
+        <img
+          src="/images/strawberry-field.jpg"
+          onError={(e) => {
+            e.currentTarget.src =
+              "https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1200&auto=format&fit=crop";
+          }}
+          alt="Strawberry Field"
+          className="absolute inset-0 h-full w-full object-cover object-center opacity-90"
+        />
 
-            <div>
-              <p className="text-[10px] text-muted-foreground">
-                Field conditions
-              </p>
-              <p className="text-xs font-semibold">Optimal</p>
-            </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/50 via-slate-950/70 to-slate-950" />
+
+        <div className="relative z-10 mx-auto max-w-5xl text-center">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-950/80 backdrop-blur px-4 py-1.5 text-xs font-semibold text-emerald-300">
+            <Sparkles className="h-4 w-4 text-emerald-400" />
+
+            <span>
+              {t("common:badge", {
+                defaultValue:
+                  "Next-Gen Precision Agriculture",
+              })}
+            </span>
           </div>
-        </div>
 
-        {/* Bottom insight */}
-        <div className="mt-3 flex items-center gap-3 rounded-xl border border-primary/10 bg-primary/5 p-3">
-          <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-primary/10">
-            <Sparkles className="h-3.5 w-3.5 text-primary" />
-          </span>
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-[1.15] max-w-4xl mx-auto">
+            {t("common:heroTitle1", {
+              defaultValue: "Transform your ",
+            })}
 
-          <div>
-            <p className="text-xs font-medium">AI insight layer</p>
-            <p className="text-[10px] text-muted-foreground">
-              Combining field signals into actionable intelligence.
-            </p>
-          </div>
-        </div>
-      </GlassCard>
+            <span className="bg-gradient-to-r from-emerald-400 via-teal-300 to-green-400 bg-clip-text text-transparent">
+              {t("common:heroTitle2", {
+                defaultValue: "fields",
+              })}
+            </span>
 
-      {/* Floating status */}
-      <div className="absolute -bottom-4 -left-4 hidden items-center gap-2 rounded-xl border border-border bg-background/90 px-3 py-2 shadow-lg backdrop-blur sm:flex">
-        <span className="grid h-7 w-7 place-items-center rounded-lg bg-primary/10">
-          <Activity className="h-3.5 w-3.5 text-primary" />
-        </span>
+            {t("common:heroTitle3", {
+              defaultValue:
+                " with real-time AI insights.",
+            })}
+          </h1>
 
-        <div>
-          <p className="text-[9px] text-muted-foreground">
-            FIELD STATUS
+          <p className="mt-6 text-sm sm:text-base md:text-lg leading-relaxed text-slate-300 max-w-3xl mx-auto">
+            {t("common:heroDesc", {
+              defaultValue:
+                "AgriSense AI merges IoT soil moisture sensors, leaf-level computer vision diagnostics, and predictive analytics into an all-in-one command center.",
+            })}
           </p>
-          <p className="text-xs font-semibold">Monitoring active</p>
+
+          <div className="mt-8 flex flex-col sm:flex-row justify-center items-center gap-4">
+            <Link
+              to="/auth"
+              className="w-full sm:w-auto"
+            >
+              <Button
+                size="lg"
+                className="w-full sm:w-auto gap-2 bg-emerald-600 font-semibold px-8 text-white shadow-lg shadow-emerald-900/50 hover:bg-emerald-500"
+              >
+                {t("common:startTrial", {
+                  defaultValue: "Start Free Trial",
+                })}
+
+                <ArrowRight className="h-4 w-4" />
+              </Button>
+            </Link>
+
+            <a
+              href="#features"
+              onClick={(e) =>
+                scrollToSection(e, "features")
+              }
+              className="w-full sm:w-auto"
+            >
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-slate-700 bg-slate-900/80 text-slate-200 hover:bg-slate-800 hover:text-white"
+              >
+                {t("common:explorePlatform", {
+                  defaultValue: "Explore Platform",
+                })}
+              </Button>
+            </a>
+          </div>
+
+          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 border-t border-slate-800/80 pt-6 text-xs sm:text-sm text-slate-300 font-medium">
+            <span className="flex items-center justify-center gap-2">
+              <CheckCircle2 className="h-4 w-4 text-emerald-400" />
+              {t("common:check1", {
+                defaultValue: "Automated Irrigation",
+              })}
+            </span>
+
+            <span className="flex items-center justify-center gap-2">
+              <CheckCircle2 className="h-4 w-4 text-emerald-400" />
+              {t("common:check2", {
+                defaultValue:
+                  "Early Disease Detection",
+              })}
+            </span>
+
+            <span className="flex items-center justify-center gap-2">
+              <CheckCircle2 className="h-4 w-4 text-emerald-400" />
+              {t("common:check3", {
+                defaultValue:
+                  "Live Field Camera AI",
+              })}
+            </span>
+
+            <span className="flex items-center justify-center gap-2">
+              <CheckCircle2 className="h-4 w-4 text-emerald-400" />
+              {t("common:check4", {
+                defaultValue:
+                  "Yield Risk Forecasting",
+              })}
+            </span>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-        {/* EXISTING FEATURES */}
+      </section>
+
+      {/* CONTENT SECTIONS */}
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        {/* FEATURES SECTION */}
         <section
-  id="features"
-  className="mt-20 grid gap-4 sm:grid-cols-2"
->
-          {FEATURES.map((f) => (
-            <GlassCard
-  key={f.title}
-  hover
-  className="group animate-rise cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
->
-              <div className="mb-3 flex items-center gap-3">
-                <span className="grid h-10 w-10 place-items-center rounded-[var(--radius-md)] bg-secondary text-secondary-foreground">
-                  <f.icon className="h-5 w-5" />
-                </span>
-
-                <h2 className="text-base font-semibold">
-                  {f.emoji} {f.title}
-                </h2>
-              </div>
-
-              <p className="text-sm leading-6 text-muted-foreground">
-                {f.text}
-              </p>
-
-              <div className="mt-4 flex items-center gap-1 text-xs font-medium text-primary">
-                Explore capability
-                <ArrowRight className="h-3.5 w-3.5" />
-              </div>
-            </GlassCard>
-          ))}
-        </section>
-
-        {/* HOW IT WORKS */}
-        <section id="how-it-works" className="mt-24">
-          <div className="mx-auto max-w-2xl text-center">
-            <p className="text-sm font-medium text-primary">
-              SIMPLE. INTELLIGENT. ACTIONABLE.
-            </p>
-
-            <h2 className="mt-2 text-3xl font-semibold md:text-4xl">
-              From field data to better decisions.
+          id="features"
+          className="min-h-[calc(100vh-80px)] flex flex-col justify-center py-12"
+        >
+          <div className="text-center">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white">
+              {t("common:featuresTitle", {
+                defaultValue:
+                  "Smart Features Built for the Field",
+              })}
             </h2>
 
-            <p className="mt-4 text-sm leading-6 text-muted-foreground md:text-base">
-              AgriSense AI turns everyday farm observations into insights that
-              are easier to understand and act on.
+            <p className="mt-3 text-sm sm:text-base text-slate-400 max-w-2xl mx-auto">
+              {t("common:featuresSub", {
+                defaultValue:
+                  "Everything you need to improve yield and lower resource wastage.",
+              })}
             </p>
           </div>
 
-          <div className="mt-10 grid gap-4 md:grid-cols-4">
-            {WORKFLOW.map((step, index) => (
+          <div className="mt-10 grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+            {FEATURES.map((f) => (
               <GlassCard
-                key={step.number}
-                className="relative animate-rise"
+                key={f.titleKey}
+                className="group relative overflow-hidden bg-slate-900/90 border-slate-800 hover:border-emerald-500/50 transition-all duration-300 hover:-translate-y-1 p-6 rounded-2xl shadow-lg"
               >
-                <div className="flex items-center justify-between">
-                  <span className="text-3xl font-semibold text-primary/30">
-                    {step.number}
-                  </span>
-
-                  {index < WORKFLOW.length - 1 && (
-                    <ArrowRight className="hidden h-4 w-4 text-muted-foreground md:block" />
-                  )}
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-400 group-hover:bg-emerald-500/20">
+                  <f.icon className="h-6 w-6" />
                 </div>
 
-                <h3 className="mt-5 text-lg font-semibold">
-                  {step.title}
+                <h3 className="text-lg font-semibold text-white">
+                  {t(f.titleKey, {
+                    defaultValue: f.defaultTitle,
+                  })}
                 </h3>
 
-                <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                  {step.text}
+                <p className="mt-2 text-xs sm:text-sm leading-relaxed text-slate-400">
+                  {t(f.textKey, {
+                    defaultValue: f.defaultText,
+                  })}
                 </p>
               </GlassCard>
             ))}
           </div>
         </section>
 
-        {/* AI CAPABILITIES */}
-        <section id="capabilities" className="mt-24">
-          <div className="grid gap-8 rounded-[var(--radius-lg)] border border-border/60 bg-background/50 p-6 backdrop-blur-sm md:grid-cols-2 md:p-10">
-            <div>
-              <p className="text-sm font-medium text-primary">
-                ONE FARM. ONE INTELLIGENCE LAYER.
-              </p>
+        {/* BIO PRODUCTS SECTION */}
+        <section
+          id="products"
+          className="min-h-[calc(100vh-80px)] flex flex-col justify-center py-12"
+        >
+          <div className="text-center">
+            <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">
+              {t("common:productsBadge", {
+                defaultValue:
+                  "Bio Inputs & Solutions",
+              })}
+            </span>
 
-              <h2 className="mt-2 text-3xl font-semibold md:text-4xl">
-                Everything you need to understand your field.
-              </h2>
+            <h2 className="mt-2 text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white">
+              {t("common:productsTitle", {
+                defaultValue:
+                  "Our Organic Bio Products",
+              })}
+            </h2>
 
-              <p className="mt-4 text-sm leading-6 text-muted-foreground md:text-base">
-                Bring multiple sources of farm information together and turn
-                them into a clearer picture of crop health, irrigation needs
-                and potential risks.
-              </p>
+            <p className="mt-2 text-slate-400 max-w-2xl mx-auto">
+              {t("common:productsSub", {
+                defaultValue:
+                  "High-yield bio-fertilizers and organic soil conditioners.",
+              })}
+            </p>
+          </div>
 
-              <Link to="/auth" className="mt-6 inline-flex">
-                <Button className="gap-2">
-                  Explore AgriSense AI
-                  <ArrowRight className="h-4 w-4" />
+          <div className="mt-10 grid gap-6 grid-cols-1 md:grid-cols-3">
+            {PRODUCTS.map((p) => (
+              <GlassCard
+                key={p.id}
+                className="flex flex-col justify-between bg-slate-900/90 border-slate-800 hover:border-emerald-500/50 transition-all p-5 rounded-2xl"
+              >
+                <div>
+                  <div className="h-40 overflow-hidden rounded-xl bg-slate-800 mb-4">
+                    <img
+                      src={p.img}
+                      alt={p.name}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+
+                  <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-400">
+                    {p.tag}
+                  </span>
+
+                  <h3 className="mt-3 text-lg font-bold text-white">
+                    {p.name}
+                  </h3>
+
+                  <p className="mt-1.5 text-xs text-slate-400 leading-relaxed">
+                    {p.desc}
+                  </p>
+                </div>
+
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="mt-5 w-full border-slate-700 bg-slate-800 text-emerald-400 hover:bg-slate-700 hover:text-emerald-300"
+                >
+                  {t("common:viewProduct", {
+                    defaultValue:
+                      "View Product Info",
+                  })}
                 </Button>
-              </Link>
+              </GlassCard>
+            ))}
+          </div>
+        </section>
+
+        {/* WORKFLOW SECTION */}
+        <section
+          id="how-it-works"
+          className="min-h-[calc(100vh-80px)] flex flex-col justify-center py-12"
+        >
+          <div className="rounded-3xl border border-slate-800 bg-slate-900/50 p-6 sm:p-10">
+            <div className="mx-auto max-w-2xl text-center">
+              <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">
+                {t("common:workflowBadge", {
+                  defaultValue:
+                    "Simple Workflow",
+                })}
+              </span>
+
+              <h2 className="mt-2 text-2xl sm:text-3xl font-bold text-white">
+                {t("common:workflowTitle", {
+                  defaultValue:
+                    "From raw field data to actionable decisions",
+                })}
+              </h2>
             </div>
 
-            <div className="grid gap-3 sm:grid-cols-2">
-              {CAPABILITIES.map((item) => (
+            <div className="mt-8 grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+              {WORKFLOW.map((step) => (
                 <div
-                  key={item}
-                  className="flex items-start gap-3 rounded-[var(--radius-md)] border border-border/50 bg-card/60 p-4"
+                  key={step.number}
+                  className="rounded-2xl border border-slate-800 bg-slate-950/80 p-5"
                 >
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-
-                  <span className="text-sm text-muted-foreground">
-                    {item}
+                  <span className="text-3xl font-black text-emerald-500/40">
+                    {step.number}
                   </span>
+
+                  <h3 className="mt-2 text-base font-semibold text-white">
+                    {t(step.titleKey, {
+                      defaultValue:
+                        step.defaultTitle,
+                    })}
+                  </h3>
+
+                  <p className="mt-2 text-xs leading-relaxed text-slate-400">
+                    {t(step.textKey, {
+                      defaultValue: step.defaultText,
+                    })}
+                  </p>
                 </div>
               ))}
             </div>
           </div>
         </section>
-
-        {/* FINAL CTA */}
-        <section className="mt-24 pb-10">
-          <GlassCard className="relative overflow-hidden p-8 text-center md:p-12">
-            <div className="relative z-10 mx-auto max-w-2xl">
-              <span className="mx-auto grid h-12 w-12 place-items-center rounded-[var(--radius-md)] bg-primary text-primary-foreground">
-                <Leaf className="h-6 w-6" />
-              </span>
-
-              <h2 className="mt-5 text-3xl font-semibold md:text-4xl">
-                Make every farm decision smarter.
-              </h2>
-
-              <p className="mt-4 text-sm leading-6 text-muted-foreground md:text-base">
-                Monitor your crops, understand risks and turn field data into
-                actionable insights with AgriSense AI.
-              </p>
-
-              <Link to="/auth" className="mt-7 inline-flex">
-                <Button size="lg" className="gap-2">
-                  Start monitoring
-                  <ArrowRight className="h-4 w-4" />
-                </Button>
-              </Link>
-            </div>
-          </GlassCard>
-        </section>
       </div>
+
+      {/* FOOTER */}
+      <footer className="border-t border-slate-800 bg-slate-950 text-slate-300">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-12">
+          <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="sm:col-span-2 lg:col-span-1">
+              <div className="flex items-center gap-2">
+                <Leaf className="h-6 w-6 text-emerald-400" />
+
+                <span className="text-xl font-bold text-white">
+                  AgriSense AI
+                </span>
+              </div>
+
+              <p className="mt-3 text-xs sm:text-sm leading-relaxed text-slate-400">
+                Empowering farmers worldwide with actionable AI
+                intelligence, crop health analytics, and organic
+                bio-fertilizer formulations.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="text-sm font-semibold text-white">
+                Platform
+              </h4>
+
+              <ul className="mt-4 space-y-2 text-xs sm:text-sm text-slate-400">
+                <li>
+                  <a
+                    href="#features"
+                    onClick={(e) =>
+                      scrollToSection(e, "features")
+                    }
+                    className="hover:text-emerald-400 cursor-pointer"
+                  >
+                    {t("nav:features", {
+                      defaultValue: "Features",
+                    })}
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    href="#products"
+                    onClick={(e) =>
+                      scrollToSection(e, "products")
+                    }
+                    className="hover:text-emerald-400 cursor-pointer"
+                  >
+                    {t("nav:products", {
+                      defaultValue: "Our Products",
+                    })}
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    href="#how-it-works"
+                    onClick={(e) =>
+                      scrollToSection(
+                        e,
+                        "how-it-works",
+                      )
+                    }
+                    className="hover:text-emerald-400 cursor-pointer"
+                  >
+                    {t("nav:howItWorks", {
+                      defaultValue: "How it Works",
+                    })}
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-sm font-semibold text-white">
+                Products
+              </h4>
+
+              <ul className="mt-4 space-y-2 text-xs sm:text-sm text-slate-400">
+                <li>
+                  <a
+                    href="#products"
+                    onClick={(e) =>
+                      scrollToSection(e, "products")
+                    }
+                    className="hover:text-emerald-400 cursor-pointer"
+                  >
+                    BHU TEJAS Bio-Fertilizer
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    href="#products"
+                    onClick={(e) =>
+                      scrollToSection(e, "products")
+                    }
+                    className="hover:text-emerald-400 cursor-pointer"
+                  >
+                    BIO SPARSH Nutrient Saver
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    href="#products"
+                    onClick={(e) =>
+                      scrollToSection(e, "products")
+                    }
+                    className="hover:text-emerald-400 cursor-pointer"
+                  >
+                    AGRIDERMA Fungicide
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-sm font-semibold text-white">
+                Contact & Support
+              </h4>
+
+              <ul className="mt-4 space-y-2.5 text-xs sm:text-sm text-slate-400">
+                <li className="flex items-center gap-2">
+                  <Mail className="h-4 w-4 text-emerald-400 shrink-0" />
+                  support@agrisense.ai
+                </li>
+
+                <li className="flex items-center gap-2">
+                  <Phone className="h-4 w-4 text-emerald-400 shrink-0" />
+                  +91 99999-99999
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="mt-12 border-t border-slate-800/80 pt-6 text-center text-xs text-slate-500">
+            © {new Date().getFullYear()} AgriSense AI Inc. All
+            rights reserved.
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }

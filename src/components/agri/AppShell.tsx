@@ -66,7 +66,7 @@ export const OFFICER_NAV = {
   key: "official",
   label: "Officer Console",
   icon: ClipboardCheck,
-  emoji: "🧑\u200d🌾",
+  emoji: "🧑‍🌾",
 } as const;
 
 type Alert = { id: string; message: string; severity: string; created_at: string; is_read: boolean };
@@ -161,7 +161,8 @@ export function AppShell({ children }: { children: ReactNode }) {
 
         {/* Main */}
         <div className="flex min-w-0 flex-1 flex-col">
-          <header className="glass-card sticky top-0 z-30 flex items-center gap-2 rounded-none border-x-0 border-t-0 px-4 py-3">
+          {/* Opaque Header */}
+          <header className="sticky top-0 z-30 flex items-center gap-2 border-b border-border bg-background/95 backdrop-blur-md px-4 py-3">
             <span className="grid h-8 w-8 place-items-center rounded-[var(--radius-sm)] bg-primary text-primary-foreground md:hidden">
               <Sprout className="h-4 w-4" />
             </span>
@@ -274,19 +275,21 @@ export function AppShell({ children }: { children: ReactNode }) {
       </button>
       <ChatAssistant open={chatOpen} onClose={() => setChatOpen(false)} />
 
-      {/* Mobile bottom nav */}
-      <nav className="glass-card fixed inset-x-0 bottom-0 z-40 flex justify-around rounded-none border-x-0 border-b-0 px-1 py-2 md:hidden">
+      {/* Opaque Mobile Bottom Nav */}
+      <nav className="fixed inset-x-0 bottom-0 z-40 flex items-center gap-1 overflow-x-auto border-t border-border bg-background/95 backdrop-blur-md px-2 py-2 md:hidden [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
         {navItems.map((item) => (
           <Link
             key={item.to}
             to={item.to}
             className={cn(
-              "flex flex-col items-center gap-0.5 rounded-[var(--radius-sm)] px-2 py-1 text-[10px] text-muted-foreground transition-colors",
-              pathname === item.to && "text-primary",
+              "flex shrink-0 flex-col items-center gap-1 rounded-[var(--radius-sm)] px-3 py-1.5 text-[11px] font-medium text-muted-foreground transition-colors",
+              pathname === item.to && "bg-primary/10 text-primary font-semibold",
             )}
           >
-            <item.icon className="h-5 w-5" />
-            {t(`nav:short.${item.key}`, { defaultValue: item.label.split(" ")[0] ?? item.label })}
+            <item.icon className="h-5 w-5 shrink-0" />
+            <span className="whitespace-nowrap">
+              {t(`nav:short.${item.key}`, { defaultValue: item.label.split(" ")[0] ?? item.label })}
+            </span>
           </Link>
         ))}
       </nav>

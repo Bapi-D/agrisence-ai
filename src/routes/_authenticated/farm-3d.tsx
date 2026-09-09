@@ -29,6 +29,8 @@ export const Route = createFileRoute("/_authenticated/farm-3d")({
 
 const VARIETIES = ["Wheat", "Maize", "Tomato", "Soy", "Rice"];
 
+const TOTAL_PLANTS = 50;
+
 function Farm3DPage() {
   const { t } = useTranslation("farm3d");
   const { activeFarm } = useFarm();
@@ -42,8 +44,8 @@ function Farm3DPage() {
     if (!activeFarm) return;
     void (async () => {
       const [{ data: preds }, { data: dets }] = await Promise.all([
-        supabase.from("predictions").select("moisture").eq("farm_id", activeFarm.id).limit(20),
-        supabase.from("detections").select("label").eq("farm_id", activeFarm.id).limit(40),
+        supabase.from("predictions").select("moisture").eq("farm_id", activeFarm.id).limit(TOTAL_PLANTS),
+        supabase.from("detections").select("label").eq("farm_id", activeFarm.id).limit(TOTAL_PLANTS * 2),
       ]);
       const m = (preds ?? []).map((p) => Number(p.moisture));
       const healthy = (dets ?? []).filter((d) => d.label === "Healthy").length;
@@ -55,8 +57,7 @@ function Farm3DPage() {
   }, [activeFarm]);
 
   const plants = useMemo<Plant[]>(() => {
-    return Array.from({ length: 20 }, (_, i) => {
-      // Deterministic pseudo-random spread seeded by real farm aggregates.
+    return Array.from({ length: TOTAL_PLANTS }, (_, i) => {
       const jitter = ((Math.sin(i * 12.9898) * 43758.5453) % 1 + 1) % 1;
       const health = Math.max(12, Math.min(99, Math.round(seed.healthRate * 100 + (jitter - 0.5) * 55)));
       const moisture = Math.max(5, Math.min(98, Math.round(seed.moisture + (jitter - 0.5) * 34)));
