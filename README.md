@@ -47,7 +47,7 @@ A single-page dashboard app with a collapsible left sidebar and top header, five
 - **Mobile-responsive layout** with the sidebar collapsing into a bottom nav bar on small screens.
 
 ## Deliverable
-A fully working, deployed Lovable app with the dashboard UI above, Supabase-backed persistence for farms/history/alerts, and the edge functions wired up to the frontend so Water Prediction, Disease Detection, and Live Camera AI all return live results (not mocked data).
+A fully working, deployed app with the dashboard UI above, Supabase-backed persistence for farms/history/alerts, and the edge functions wired up to the frontend so Water Prediction, Disease Detection, and Live Camera AI all return live results (not mocked data).
 
 ## Development
 
