@@ -1,6 +1,6 @@
 # AgriSense AI Dashboard
 
-# AgriSense AI — Lovable Build Prompt
+# AgriSense AI 
 
 Build a full-stack smart farming web app called **AgriSense AI**.
 
@@ -48,18 +48,6 @@ A single-page dashboard app with a collapsible left sidebar and top header, five
 
 ## Deliverable
 A fully working, deployed Lovable app with the dashboard UI above, Supabase-backed persistence for farms/history/alerts, and the edge functions wired up to the frontend so Water Prediction, Disease Detection, and Live Camera AI all return live results (not mocked data).
-
-This project was built with [Lovable](https://lovable.dev).
-
-**Live app**: https://agri-sense-hub-ai.lovable.app
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/d8f4a389-5a6e-4b92-8d00-867ca4ef277c).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
 
 ## Development
 
