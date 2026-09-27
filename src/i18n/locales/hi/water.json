@@ -1,0 +1,24 @@
+{
+  "title": "💧 सिंचाई पूर्वानुमान",
+  "subtitle": "{{farm}} के लिए सिंचाई मॉडल में मिट्टी की नमी की रीडिंग डालें।",
+  "yourField": "आपके खेत",
+  "soilMoisture": "मिट्टी की नमी",
+  "predictButton": "सिंचाई की आवश्यकता का अनुमान लगाएं",
+  "category": "श्रेणी:",
+  "confidence": "{{value}}% विश्वास",
+  "trendTitle": "24-घंटे की नमी प्रवृत्ति",
+  "historyTitle": "पूर्वानुमान इतिहास",
+  "noHistory": "इस खेत के लिए अभी तक कोई पूर्वानुमान दर्ज नहीं हुआ है।",
+  "table": {
+    "time": "समय",
+    "moisture": "नमी",
+    "verdict": "निर्णय",
+    "category": "श्रेणी",
+    "confidence": "विश्वास"
+  },
+  "toast": {
+    "predictionFailed": "पूर्वानुमान विफल रहा। कृपया पुनः प्रयास करें।",
+    "thresholdAlert": "{{farm}}: मिट्टी की नमी {{moisture}}% {{threshold}}% सीमा से कम है।",
+    "success": "{{label}} · {{confidence}}% विश्वास"
+  }
+}

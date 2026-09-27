@@ -1,0 +1,28 @@
+{
+  "dashboard": "ড্যাশব'ৰ্ড",
+  "water": "পানীৰ পূৰ্বানুমান",
+  "disease": "ৰোগ চিনাক্তকৰণ",
+  "pests": "কীট-পতংগ চিনাক্তকৰণ",
+  "live": "লাইভ কেমেৰা AI",
+  "farm3d": "3D ফাৰ্ম মনিটৰ",
+  "crop": "শস্য প্ৰ'ফাইল",
+  "hotspots": "হটস্পট মানচিত্ৰ",
+  "analytics": "বিশ্লেষণ",
+  "official": "অফিচাৰ কনছ'ল",
+  "store": "এগ্ৰি ষ্ট'ৰ",
+  "hardware": "AgriSense AI হাৰ্ডৱেৰ",
+  "short": {
+    "dashboard": "হোম",
+    "water": "পানী",
+    "disease": "ৰোগ",
+    "pests": "কীট",
+    "live": "লাইভ",
+    "farm3d": "3D",
+    "crop": "শস্য",
+    "hotspots": "মানচিত্ৰ",
+    "analytics": "পৰিসংখ্যা",
+    "official": "অফিচাৰ",
+    "store": "ষ্ট'ৰ",
+    "hardware": "হাৰ্ডৱেৰ"
+  }
+}

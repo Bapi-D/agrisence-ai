@@ -1,0 +1,28 @@
+{
+  "dashboard": "ড্যাশবোর্ড",
+  "water": "জল পূর্বাভাস",
+  "disease": "রোগ শনাক্তকরণ",
+  "pests": "কীট শনাক্তকরণ",
+  "live": "লাইভ ক্যামেরা AI",
+  "farm3d": "3D খামার মনিটর",
+  "crop": "ফসল প্রোফাইল",
+  "hotspots": "হটস্পট মানচিত্র",
+  "analytics": "বিশ্লেষণ",
+  "official": "অফিসার কনসোল",
+  "store": "এগ্রি স্টোর",
+  "hardware": "AgriSense AI হার্ডওয়্যার",
+  "short": {
+    "dashboard": "হোম",
+    "water": "জল",
+    "disease": "রোগ",
+    "pests": "কীট",
+    "live": "লাইভ",
+    "farm3d": "3D",
+    "crop": "ফসল",
+    "hotspots": "মানচিত্র",
+    "analytics": "পরিসংখ্যান",
+    "official": "অফিসার",
+    "store": "স্টোর",
+    "hardware": "হার্ডওয়্যার"
+  }
+}

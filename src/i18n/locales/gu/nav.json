@@ -1,0 +1,28 @@
+{
+  "dashboard": "ડેશબોર્ડ",
+  "water": "પાણીની આગાહી",
+  "disease": "રોગ ઓળખ",
+  "pests": "જીવાત ઓળખ",
+  "live": "લાઇવ કેમેરા AI",
+  "farm3d": "3D ફાર્મ મોનિટર",
+  "crop": "પાક પ્રોફાઇલ",
+  "hotspots": "હોટસ્પોટ નકશો",
+  "analytics": "વિશ્લેષણ",
+  "official": "અધિકારી કન્સોલ",
+  "store": "એગ્રી સ્ટોર",
+  "hardware": "AgriSense AI હાર્ડવેર",
+  "short": {
+    "dashboard": "હોમ",
+    "water": "પાણી",
+    "disease": "રોગ",
+    "pests": "જીવાત",
+    "live": "લાઇવ",
+    "farm3d": "3D",
+    "crop": "પાક",
+    "hotspots": "નકશો",
+    "analytics": "આંકડા",
+    "official": "અધિકારી",
+    "store": "સ્ટોર",
+    "hardware": "હાર્ડવેર"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "title": "🌿 3D Farm Monitor",
+  "subtitle": "Drag to orbit, scroll to zoom, click any plant for its stats.",
+  "legend": {
+    "healthy": "Healthy",
+    "warning": "Needs attention",
+    "diseased": "Diseased"
+  },
+  "loadingScene": "Loading 3D field…",
+  "preparingScene": "Preparing scene…",
+  "hints": {
+    "rotate": "drag to rotate · scroll to zoom",
+    "click": "click a plant"
+  },
+  "plant": {
+    "title": "Plant #{{id}}",
+    "closeDetails": "Close details",
+    "status": "Status",
+    "healthIndex": "Health index",
+    "soilMoisture": "Soil moisture"
+  },
+  "advice": {
+    "healthy": "Growing well — no intervention needed.",
+    "warning": "Moisture or colour drift detected. Re-scan the leaves.",
+    "diseased": "Flagged: isolate, inspect the leaves and start treatment."
+  }
+}

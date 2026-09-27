@@ -1,0 +1,28 @@
+{
+  "dashboard": "ಡ್ಯಾಶ್‌ಬೋರ್ಡ್",
+  "water": "ನೀರಿನ ಮುನ್ಸೂಚನೆ",
+  "disease": "ರೋಗ ಪತ್ತೆ",
+  "pests": "ಕೀಟ ಪತ್ತೆ",
+  "live": "ಲೈವ್ ಕ್ಯಾಮೆರಾ AI",
+  "farm3d": "3D ಫಾರ್ಮ್ ಮಾನಿಟರ್",
+  "crop": "ಬೆಳೆ ಪ್ರೊಫೈಲ್",
+  "hotspots": "ಹಾಟ್‌ಸ್ಪಾಟ್ ನಕ್ಷೆ",
+  "analytics": "ವಿಶ್ಲೇಷಣೆ",
+  "official": "ಅಧಿಕಾರಿ ಕನ್ಸೋಲ್",
+  "store": "ಅಗ್ರಿ ಸ್ಟೋರ್",
+  "hardware": "AgriSense AI ಹಾರ್ಡ್‌ವೇರ್",
+  "short": {
+    "dashboard": "ಹೋಮ್",
+    "water": "ನೀರು",
+    "disease": "ರೋಗ",
+    "pests": "ಕೀಟಗಳು",
+    "live": "ಲೈವ್",
+    "farm3d": "3D",
+    "crop": "ಬೆಳೆ",
+    "hotspots": "ನಕ್ಷೆ",
+    "analytics": "ಅಂಕಿಅಂಶ",
+    "official": "ಅಧಿಕಾರಿ",
+    "store": "ಸ್ಟೋರ್",
+    "hardware": "ಹಾರ್ಡ್‌ವೇರ್"
+  }
+}

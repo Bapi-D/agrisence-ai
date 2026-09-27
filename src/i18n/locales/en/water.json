@@ -1,0 +1,24 @@
+{
+  "title": "💧 Water Prediction",
+  "subtitle": "Feed a soil-moisture reading into the irrigation model for {{farm}}.",
+  "yourField": "your field",
+  "soilMoisture": "Soil moisture",
+  "predictButton": "Predict irrigation need",
+  "category": "Category:",
+  "confidence": "{{value}}% confidence",
+  "trendTitle": "24-hour moisture trend",
+  "historyTitle": "Prediction history",
+  "noHistory": "No predictions recorded for this field yet.",
+  "table": {
+    "time": "Time",
+    "moisture": "Moisture",
+    "verdict": "Verdict",
+    "category": "Category",
+    "confidence": "Confidence"
+  },
+  "toast": {
+    "predictionFailed": "Prediction failed. Please try again.",
+    "thresholdAlert": "{{farm}}: soil moisture {{moisture}}% is below the {{threshold}}% threshold.",
+    "success": "{{label}} · {{confidence}}% confidence"
+  }
+}

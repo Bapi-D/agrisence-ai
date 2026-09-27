@@ -1,0 +1,32 @@
+{
+  "title": "🌱 Crop Profile",
+  "subtitle": "The risk forecast engine uses your crop, stage and sowing date to tune disease and pest predictions for {{farm}}.",
+  "yourFarm": "your farm",
+  "loading": "Loading crop profile…",
+  "fields": {
+    "crop": "Crop",
+    "variety": "Variety (optional)",
+    "varietyPlaceholder": "e.g. HD-2967",
+    "sowingDate": "Sowing date",
+    "daysSinceSowing": "{{count}} days since sowing",
+    "growthStage": "Growth stage"
+  },
+  "save": "Save crop profile",
+  "toast": {
+    "error": "Could not save crop profile",
+    "success": "Crop profile saved for {{farm}}"
+  },
+  "crops": {
+    "Wheat": "Wheat",
+    "Cotton": "Cotton",
+    "Tomato": "Tomato",
+    "Onion": "Onion",
+    "Grape": "Grape",
+    "Soybean": "Soybean",
+    "Sugarcane": "Sugarcane",
+    "Potato": "Potato",
+    "Banana": "Banana",
+    "Gram": "Gram",
+    "Sorghum (Jowar)": "Sorghum (Jowar)"
+  }
+}

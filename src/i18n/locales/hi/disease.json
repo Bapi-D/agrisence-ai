@@ -1,0 +1,31 @@
+{
+  "title": "🔬 रोग पहचान",
+  "subtitle": "पत्ते की फोटो डालें — रंग और बनावट विश्लेषण सर्वर पर चलता है।",
+  "dropzone": {
+    "prompt": "यहाँ पत्ते की छवि डालें",
+    "hint": "या ब्राउज़ करने के लिए क्लिक करें · JPG / PNG",
+    "previewAlt": "अपलोड की गई पत्ती का पूर्वावलोकन"
+  },
+  "chooseAnother": "दूसरी छवि चुनें",
+  "analysing": "पत्ती का विश्लेषण हो रहा है…",
+  "resultsPlaceholder": "स्कैन के बाद परिणाम यहाँ दिखाई देंगे।",
+  "noPlantDetected": "कोई पौधा नहीं मिला",
+  "confidence": "{{value}}% विश्वास",
+  "severitySuffix": "{{severity}} गंभीरता",
+  "textureVariance": "बनावट भिन्नता: {{value}} (घाव/धुंधलापन संकेत)",
+  "colorComposition": "पत्ती का रंग संघटन",
+  "colors": {
+    "green": "हरा (क्लोरोफिल)",
+    "brown": "भूरा (परिगलन)",
+    "yellow": "पीला (क्लोरोसिस)"
+  },
+  "recentUploads": "हाल की अपलोड",
+  "noScans": "अभी तक कोई स्कैन नहीं।",
+  "toast": {
+    "invalidFile": "कृपया एक छवि फ़ाइल चुनें",
+    "noLeafDetected": "उस छवि में कोई पत्ता नहीं मिला — एक ही पत्ते का क्लोज़-अप आज़माएं।",
+    "detectionFailed": "पहचान विफल रही",
+    "diseaseAlert": "{{disease}} का पता चला ({{severity}} गंभीरता, {{confidence}}% विश्वास)।",
+    "healthySuccess": "स्वस्थ पत्ता · {{confidence}}% विश्वास"
+  }
+}

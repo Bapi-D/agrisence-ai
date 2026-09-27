@@ -1,0 +1,78 @@
+{
+  "title": "🐛 कीड ओळख",
+  "subtitle": "फोटोवरून शेतातील कीड ओळखा, सापळ्यात पकडलेल्या किडींची नोंद करा आणि IPM कृती योजनेचे पालन करा.",
+  "dropzone": {
+    "title": "इथे पीक / कीड यांचा फोटो टाका",
+    "hint": "किंवा ब्राउझ करण्यासाठी क्लिक करा · JPG / PNG",
+    "alt": "कीड ओळखीसाठी अपलोड केलेला पिकाचा फोटो"
+  },
+  "buttons": {
+    "identifying": "कीड ओळखली जात आहे…",
+    "chooseAnother": "दुसरी प्रतिमा निवडा",
+    "saveTrapLog": "सापळा नोंद जतन करा"
+  },
+  "result": {
+    "noPestDetected": "कोणतीही कीड आढळली नाही",
+    "confidence": "{{value}}% विश्वासार्हता",
+    "infestation": "{{severity}} प्रादुर्भाव",
+    "stage": "{{stage}} अवस्था",
+    "ipmTitle": "शिफारस केलेली IPM कृती",
+    "damageSignature": "नुकसान चिन्ह: {{ratio}}% · पोत भिन्नता {{variance}}",
+    "placeholder": "कीड ओळखीचे निकाल इथे दिसतील."
+  },
+  "trapForm": {
+    "title": "सापळा संख्या नोंदवा",
+    "trapType": "सापळ्याचा प्रकार",
+    "trapTypes": {
+      "pheromone": "फेरोमोन सापळा",
+      "sticky": "चिकट सापळा",
+      "light": "प्रकाश सापळा"
+    },
+    "pestType": "किडीचा प्रकार",
+    "count": "पकडलेल्या किडींची संख्या",
+    "countPlaceholder": "उदा. 14",
+    "date": "तारीख",
+    "location": "ठिकाण / विभाग",
+    "locationPlaceholder": "उदा. उत्तर विभाग, ओळ 4",
+    "notes": "नोंदी",
+    "notesPlaceholder": "ऐच्छिक शेत निरीक्षण"
+  },
+  "history": {
+    "title": "कीड इतिहास",
+    "pestFilter": "कीड",
+    "allPests": "सर्व किडी",
+    "from": "पासून",
+    "to": "पर्यंत",
+    "empty": "या शेतासाठी अद्याप कोणतीही कीड नोंद नाही.",
+    "columns": {
+      "date": "तारीख",
+      "source": "स्रोत",
+      "pest": "कीड",
+      "detail": "तपशील",
+      "value": "मूल्य",
+      "expertReview": "तज्ज्ञ पुनरावलोकन"
+    },
+    "kind": {
+      "scan": "स्कॅन",
+      "trap": "सापळा"
+    },
+    "detail": {
+      "scan": "{{severity}} · {{stage}}",
+      "trapNoLocation": "{{trapType}} सापळा",
+      "trapWithLocation": "{{trapType}} सापळा · {{location}}"
+    },
+    "value": {
+      "confidence": "{{value}}%",
+      "caught": "{{count}} पकडल्या"
+    }
+  },
+  "toast": {
+    "chooseImage": "कृपया एक प्रतिमा फाइल निवडा",
+    "noPestIdentified": "कोणतीही कीड ओळखली गेली नाही",
+    "noPestPressure": "कोणताही कीड दबाव आढळला नाही",
+    "identifyFailed": "कीड ओळख अयशस्वी झाली",
+    "invalidCount": "वैध सापळा संख्या प्रविष्ट करा",
+    "trapLogged": "सापळा संख्या नोंदवली गेली",
+    "saveTrapFailed": "सापळा नोंद जतन करता आली नाही"
+  }
+}

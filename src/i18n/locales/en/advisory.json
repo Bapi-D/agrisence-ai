@@ -1,0 +1,148 @@
+{
+  "names": {
+    "Leaf Blight": "Leaf Blight",
+    "Powdery Mildew": "Powdery Mildew",
+    "Leaf Spot": "Leaf Spot",
+    "Rust Disease": "Rust Disease",
+    "Chlorosis": "Chlorosis",
+    "Aphids": "Aphids",
+    "Stem Borer": "Stem Borer",
+    "Whitefly": "Whitefly",
+    "Armyworm": "Armyworm",
+    "Locust": "Locust",
+    "Bollworm": "Bollworm"
+  },
+  "labels": {
+    "Healthy": "Healthy",
+    "Diseased": "Diseased",
+    "No Plant": "No Plant",
+    "Water Needed": "Water Needed",
+    "No Water Needed": "No Water Needed"
+  },
+  "severity": {
+    "None": "None",
+    "Low": "Low",
+    "Moderate": "Moderate",
+    "Medium": "Medium",
+    "High": "High",
+    "Severe": "Severe"
+  },
+  "moisture": {
+    "Dry": "Dry",
+    "Moderate": "Moderate",
+    "Optimal": "Optimal",
+    "Wet": "Wet"
+  },
+  "stage": {
+    "Seedling": "Seedling",
+    "Vegetative": "Vegetative",
+    "Flowering": "Flowering",
+    "Fruiting / Maturity": "Fruiting / Maturity",
+    "Harvest": "Harvest"
+  },
+  "riskLevel": {
+    "Low": "Low",
+    "Medium": "Medium",
+    "High": "High",
+    "Moderate": "Moderate",
+    "Severe": "Severe"
+  },
+  "disease": {
+    "Leaf Blight": {
+      "description": "Large irregular brown necrotic patches spreading from the leaf margins, typical of bacterial or fungal blight under humid conditions.",
+      "treatment": "Remove and destroy affected leaves, improve airflow between rows, and apply a copper-based fungicide every 7–10 days."
+    },
+    "Powdery Mildew": {
+      "description": "Pale, low-saturation powdery film across the leaf surface caused by fungal mycelium growth in warm, dry days with humid nights.",
+      "treatment": "Spray a potassium-bicarbonate or sulphur solution in the early morning, reduce canopy density and avoid overhead watering."
+    },
+    "Leaf Spot": {
+      "description": "Small, high-contrast dark brown lesions scattered across the blade — a classic fungal leaf-spot texture signature.",
+      "treatment": "Prune infected foliage, keep leaves dry, and rotate a chlorothalonil or neem-oil treatment on a weekly cycle."
+    },
+    "Rust Disease": {
+      "description": "Orange-brown pustules mixed with yellow chlorotic haloes, indicating a rust fungus colonising the underside of the leaf.",
+      "treatment": "Apply a triazole fungicide, clear crop debris around the plant, and avoid nitrogen over-fertilisation."
+    },
+    "Chlorosis": {
+      "description": "Widespread yellowing with veins still green — nutrient chlorosis, usually iron, magnesium or nitrogen deficiency or waterlogging.",
+      "treatment": "Apply chelated iron or a balanced micronutrient feed, check soil pH (target 6.0–6.8) and correct drainage."
+    },
+    "healthy": {
+      "description": "Chlorophyll signature is strong and evenly distributed with no significant necrotic or chlorotic pixels.",
+      "treatment": "No action needed. Maintain the current irrigation and feeding schedule and re-scan in 3–5 days."
+    },
+    "noPlant": {
+      "skin": "The frame looks like a person or skin tone rather than foliage — no chlorophyll signature was found.",
+      "empty": "No leaf detected. The frame has too little chlorophyll signal to analyse.",
+      "treatment": "Point the camera at a single leaf, fill most of the frame with it and keep good, even lighting."
+    }
+  },
+  "pest": {
+    "Aphids": {
+      "description": "Dense clusters of small soft-bodied insects on shoots and leaf undersides, with curling leaves and sticky honeydew film.",
+      "ipm": "Release ladybird beetles or lacewings, spray neem oil (5 ml/L) or insecticidal soap early morning, and avoid excess nitrogen which drives fresh flush growth."
+    },
+    "Stem Borer": {
+      "description": "Bore holes and frass at the stem node with dead-heart shoots — larvae tunnelling inside the stalk disrupt sap flow.",
+      "ipm": "Clip and destroy dead hearts, install pheromone traps at 5/acre, release Trichogramma egg parasitoids, and avoid ratooning infested stubble."
+    },
+    "Whitefly": {
+      "description": "Tiny white winged adults lifting off the canopy when disturbed, with mottled chlorotic patches and sooty mould from honeydew.",
+      "ipm": "Hang yellow sticky traps at 10/acre, spray neem or a horticultural oil on leaf undersides, and remove alternate weed hosts around the field bund."
+    },
+    "Armyworm": {
+      "description": "Ragged window-pane feeding and skeletonised leaf blades typical of gregarious armyworm larvae feeding at night.",
+      "ipm": "Hand-pick larvae at dusk, apply Bacillus thuringiensis or an NPV bio-pesticide, place poison-bran bait in whorls and keep field borders weed-free."
+    },
+    "Locust": {
+      "description": "Heavy, coarse defoliation with whole leaf sections removed — a swarm or hopper-band grazing signature.",
+      "ipm": "Alert local plant-protection authorities, use metarhizium bio-pesticide on hopper bands, run smoke/noise deterrents and shield nurseries with netting."
+    },
+    "Bollworm": {
+      "description": "Circular bore holes in buds, squares or fruit with larval excreta at the entry point — classic bollworm/fruit-borer damage.",
+      "ipm": "Install pheromone traps at 5/acre for monitoring, release Trichogramma, spray Bt or spinosad at ETL, and remove and destroy damaged squares and bolls."
+    },
+    "clean": {
+      "description": "Canopy looks clean — no clustered insect bodies, bore holes or chewing damage in the colour and texture signature.",
+      "ipm": "No treatment needed. Keep pheromone/sticky traps in place and re-scout the block in 3–4 days."
+    },
+    "noPlant": {
+      "skin": "The frame looks like a person rather than a crop — no foliage signal to inspect for pests.",
+      "empty": "No crop foliage detected in this frame, so no pest assessment could be made.",
+      "ipm": "Point the camera at the affected crop foliage, stem or fruit and fill the frame with it in even light."
+    }
+  },
+  "water": {
+    "critical": "Soil is critically dry. Irrigate now with a deep watering cycle and re-check in 6 hours.",
+    "low": "Moisture is below the healthy band. Schedule a moderate irrigation cycle within the next few hours.",
+    "saturated": "Soil is saturated. Hold irrigation and check drainage to avoid root rot.",
+    "optimal": "Moisture is in the optimal band. No irrigation needed — re-check in 12 hours."
+  },
+  "risk": {
+    "factors": {
+      "highHumidity": "High humidity ({{humidity}}%) sustains leaf wetness — classic fungal blight weather",
+      "moderateHumidity": "Moderately humid canopy ({{humidity}}%) over the window",
+      "heavyRain": "{{rain}} mm rainfall forecast spreads spores by splash",
+      "lightRain": "Light rain ({{rain}} mm) keeps foliage damp",
+      "fungalTemp": "Temperatures near {{temp}}°C sit in the fungal optimum",
+      "lowWind": "Low wind means poor canopy drying",
+      "wetSoil": "Soil moisture history is high — waterlogged root zone stress",
+      "diseaseHistory": "{{count}} recent disease detection(s) on this farm",
+      "cropStageSusceptible": "{{crop}} at {{stage}} stage is susceptible right now",
+      "warmDays": "Warm days near {{temp}}°C speed up pest life cycles",
+      "dryAir": "Drier air ({{humidity}}%) favours aphids and whitefly build-up",
+      "littleRain": "Little rain to wash off larvae and eggs",
+      "trapCatches": "Trap catches averaging {{avg}}/trap",
+      "pestHistory": "{{count}} recent pest detection(s) logged nearby",
+      "drySoil": "Dry soil history — stressed plants attract more pests"
+    }
+  },
+  "status": {
+    "pending": "Pending Review",
+    "confirmed": "Confirmed by Officer",
+    "corrected": "Corrected by Officer",
+    "referred_lab": "Referred to Lab",
+    "referred_specialist": "Referred to Specialist"
+  }
+}
